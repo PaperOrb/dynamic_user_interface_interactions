@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav>
+      <ul class="nav-list">
+        <li>
+          <div class="news" id="news">News</div>
+        </li>
+        <li>
+          <div class="photos" id="photos">Photos</div>
+        </li>
+        <li>
+          <div class="more" id="more">More</div>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <div class="dropdown-container" hidden>
+        <ul class="dropdown-ul">
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+        </ul>
+      </div>
+
+      <article class="news-content"></article>
+
+      <article class="carousel">
+        <button class="carousel__button carousel__button--left">
+          <i class="fas fa-arrow-left fa-2x"></i>
+        </button>
+        <div class="carousel__slide-container">
+          <img src="./images/abstract-268771_960_720.jpg" alt="" />
+          <img src="./images/beauty-of-nature-3.jpg" alt="" />
+          <img src="./images/landscape-summer-lake.jpg" alt="" />
+        </div>
+        <button class="carousel__button carousel__button--right">
+          <i class="fas fa-arrow-right fa-2x"></i>
+        </button>
+
+        <div class="carousel__nav">
+          <button class="carousel__indicator current-slide-btn"></button>
+          <button class="carousel__indicator"></button>
+          <button class="carousel__indicator"></button>
+        </div>
+      </article>
+    </main>
+  </body>
+  <script src="./index.js"></script>
+</html>

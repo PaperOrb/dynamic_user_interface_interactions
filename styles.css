@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  max-height: 100vh;
+  max-width: 100vw;
+}
+
+.nav-list {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: 5vh;
+  width: 100%;
+  list-style: none;
+}
+
+.nav-list li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: gray;
+  border: 1px solid black;
+}
+
+.nav-list li div {
+  font-size: 16px;
+}
+
+.nav-list li div:hover {
+  transform: scale(130%);
+  cursor: pointer;
+}
+
+.carousel {
+  position: relative;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  height: 95vh;
+  width: 100%;
+}
+
+.carousel__slide-container {
+  display: flex;
+  position: relative;
+  width: 50vw;
+  height: 50vh;
+  transition: all 250ms;
+}
+
+.carousel__slide-container img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  left: 0;
+  top: 0;
+}
+
+.carousel__button {
+  position: absolute;
+  display: flex;
+  background: none;
+  border: none;
+}
+
+.carousel__button:hover {
+  transform: scale(120%);
+  cursor: pointer;
+}
+
+
+.carousel__button--left {
+  left: 23vw;
+}
+
+.carousel__button--right {
+  right: 23vw;
+}
+
+.carousel__nav {
+  position: absolute;
+  bottom: 20vh;
+  cursor: default;
+}
+
+.carousel__indicator {
+  width: 14px;
+  height: 14px;
+  margin: 0 5px;
+  background: rgba(128, 128, 128, 0.609);
+  border-radius: 100%;
+  border-color: transparent;
+}
+
+.carousel__indicator:hover {
+  cursor: pointer;
+  transform: scale(120%);
+}
+
+.current-slide-btn {
+  background-color: rgba(0, 0, 0, 0.602);
+}
+
+.dropdown-container {
+  position: absolute;
+  height: 95vh;
+  width: 15vw;
+  background-color: red;
+  right: 0px;
+  top: 5vh;
+}
+
+.dropdown-ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+
+.dropdown-ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  background: blue;
+  border: 1px solid black;
+}
+
+.show-dropdown {
+  display: visible;
+}
