@@ -74,7 +74,6 @@ body {
   cursor: pointer;
 }
 
-
 .carousel__button--left {
   left: 23vw;
 }
@@ -114,6 +113,18 @@ body {
   background-color: red;
   right: 0px;
   top: 5vh;
+}
+
+.news-content {
+  display: flex;
+  height: 95vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-story {
+  font-size: 48px;
+  font-weight: 900;
 }
 
 .dropdown-ul {

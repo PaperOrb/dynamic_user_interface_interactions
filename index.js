@@ -43,9 +43,15 @@ function renderDropdown(dropdown) {
 }
 
 nav.addEventListener("click", (e) => {
-  tabId = e.target.id; // catch edge cases when nav is clicked instead of tab displaying
+  tabId = e.target.id;
+  const acceptableIDS = ["more", "news", "photos"];
+  if (!acceptableIDS.some((id) => id === tabId)) return;
+
+  if (tabId === "more") {
+    renderDropdown(dropdown);
+    return; // guard clause so that dropdown can display without toggling unrelated stuff
+  }
 
   tabId === "photos" ? carousel.display("flex") : carousel.display("none");
   tabId === "news" ? news.display("flex") : news.display("none");
-  if (tabId === "more") renderDropdown(dropdown);
 });
