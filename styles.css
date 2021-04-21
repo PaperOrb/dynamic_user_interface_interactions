@@ -94,7 +94,7 @@ main {
 
 .carousel__nav {
   position: absolute;
-  bottom: 20vh;
+  bottom: 15vh;
   cursor: default;
 }
 
@@ -112,7 +112,7 @@ main {
   transform: scale(120%);
 }
 
-.current-slide-btn {
+.current-slide-dot {
   background-color: rgba(0, 0, 0, 0.602);
 }
 
