@@ -9,22 +9,44 @@ let tabId = "news";
 const carousel = (function () {
   const slidecontainer = document.querySelector(".carousel__slide-container");
   const carouselImgs = Array.from(slidecontainer.children);
-  let currentImgId = 3;
+  let currentImgId = "s1";
   let currentImg = document.getElementById(`${currentImgId}`);
 
-  function setCurrentImg(direction) {
-    direction === "left" ? --currentImgId : ++currentImgId;
+  function setCurrentImgId(direction) {
+    let idToInt = Number(currentImgId[1]);
+    direction === "left" ? (idToInt -= 1) : (idToInt += 1);
+    currentImgId = "s" + idToInt;
+  }
+
+  function setCurrentImg() {
     currentImg = document.getElementById(`${currentImgId}`);
   }
 
+  function setDefaultImgMargin() {
+    carouselImgs.forEach((ele) => {
+      ele.style.marginLeft = "100%";
+    });
+    carouselImgs[0].style.marginLeft = "0";
+  }
+
   function gotoLeftImg() {
-    currentImg.classList.toggle("selected-image");
-    setCurrentImg("left");
-    currentImg.classList.toggle("selected-image");
+    currentImg.style.marginLeft = "100%";
+    setCurrentImgId("left");
+    setCurrentImg();
+    currentImg.style.marginLeft = "0";
   }
 
   function gotoRightImg() {
-    alert("yep");
+    // console.log(currentImgId);
+    // console.log(currentImg);
+    // debugger;
+    currentImg.style.marginLeft = "-100%";
+    setCurrentImgId("Left");
+    setCurrentImg();
+    // console.log(currentImgId);
+    // console.log(currentImg);
+    // debugger;
+    currentImg.style.marginLeft = "0";
   }
 
   function gotoClickedImg() {}
@@ -43,7 +65,7 @@ const carousel = (function () {
     return document.querySelectorAll(".nav-dots");
   }
 
-  return { display, gotoLeftImg, gotoRightImg, gotoClickedImg, timer, arrows, navDots };
+  return { display, gotoLeftImg, gotoRightImg, gotoClickedImg, timer, arrows, navDots, setDefaultImgMargin };
 })();
 
 const news = (function () {
@@ -59,6 +81,8 @@ const news = (function () {
 function renderDropdown(dropdown) {
   dropdown.toggleAttribute("hidden");
 }
+
+carousel.setDefaultImgMargin();
 
 nav.addEventListener("click", (e) => {
   tabId = e.target.id;
@@ -80,7 +104,7 @@ carouselNode.addEventListener("click", (e) => {
       carousel.gotoLeftImg();
       break;
     case "carousel__button--right":
-      carousel.gotoLeftImg();
+      carousel.gotoRightImg();
       break;
   }
 });

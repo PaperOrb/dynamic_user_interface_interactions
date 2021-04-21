@@ -9,6 +9,13 @@ body {
   max-width: 100vw;
 }
 
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
 .nav-list {
   position: relative;
   display: flex;
@@ -38,33 +45,29 @@ body {
 
 .carousel {
   overflow: auto;
-  position: relative;
+  width: 50vw;
+  height: 50vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 95vh;
+  transition: 500ms;
 }
 
 .carousel__slide-container {
-  display: flex;
   position: relative;
-  width: auto;
+  display: flex;
+  width: 200%;
   height: 50vh;
-  transition: all 250ms;
+  transition: 500ms;
+  overflow-x: hidden;
 }
 
 .carousel__slide-container img {
-  display: none;
-  width: auto;
+  position: absolute;
+  width: 100%;
   height: 100%;
   object-fit: cover;
-  left: 0;
-  top: 0;
-}
-
-.selected-image {
-  display: flex !important;
-  left: 50%;
+  transition: 500ms;
 }
 
 .carousel__button {
@@ -81,6 +84,7 @@ body {
 
 .carousel__button--left {
   left: 23vw;
+  z-index: 100;
 }
 
 .carousel__button--right {
