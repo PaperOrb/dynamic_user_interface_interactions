@@ -51,6 +51,7 @@ main {
   align-items: center;
   justify-content: center;
   transition: 500ms;
+  background: rgba(0, 0, 0, .8);
 }
 
 .carousel__slide-container {

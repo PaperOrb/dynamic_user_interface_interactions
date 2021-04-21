@@ -4,7 +4,7 @@ const photosBtn = document.querySelector(".photos");
 const moreBtn = document.querySelector(".more");
 const dropdown = document.querySelector(".dropdown-container");
 const carouselNode = document.querySelector(".carousel");
-let tabId = "news";
+let tabId = "photos";
 
 const carousel = (function () {
   const slidecontainer = document.querySelector(".carousel__slide-container");
@@ -14,7 +14,20 @@ const carousel = (function () {
 
   function setCurrentImgId(direction) {
     let idToInt = Number(currentImgId[1]);
-    direction === "left" ? (idToInt -= 1) : (idToInt += 1);
+    // direction === "left" ? (idToInt -= 1) : (idToInt += 1);
+    if (direction === "left" && idToInt !== 1) {
+      idToInt -= 1;
+    } else if (direction === "left" && idToInt === 1) {
+      idToInt = carouselImgs.length; // loop back around
+      setDefaultImgMargin("left"); // loop back around
+    } else if (direction === "right" && idToInt !== carouselImgs.length) {
+      idToInt += 1;
+    } else if (direction === "right" && idToInt === carouselImgs.length) {
+      idToInt = 1; // loop back around
+      setDefaultImgMargin("right"); // loop back around
+    } else {
+      console.log(carouselImgs.length);
+    }
     currentImgId = "s" + idToInt;
   }
 
@@ -22,11 +35,18 @@ const carousel = (function () {
     currentImg = document.getElementById(`${currentImgId}`);
   }
 
-  function setDefaultImgMargin() {
-    carouselImgs.forEach((ele) => {
-      ele.style.marginLeft = "100%";
-    });
-    carouselImgs[0].style.marginLeft = "0";
+  function setDefaultImgMargin(direction) {
+    if (direction === "right") {
+      carouselImgs.forEach((ele) => {
+        ele.style.marginLeft = "100%";
+      });
+      carouselImgs[0].style.marginLeft = "0";
+    } else {
+      carouselImgs.forEach((ele) => {
+        ele.style.marginLeft = "-100%";
+      });
+      carouselImgs[2].style.marginLeft = "0";
+    }
   }
 
   function gotoLeftImg() {
@@ -41,7 +61,7 @@ const carousel = (function () {
     // console.log(currentImg);
     // debugger;
     currentImg.style.marginLeft = "-100%";
-    setCurrentImgId("Left");
+    setCurrentImgId("right");
     setCurrentImg();
     // console.log(currentImgId);
     // console.log(currentImg);
@@ -82,7 +102,7 @@ function renderDropdown(dropdown) {
   dropdown.toggleAttribute("hidden");
 }
 
-carousel.setDefaultImgMargin();
+carousel.setDefaultImgMargin("right");
 
 nav.addEventListener("click", (e) => {
   tabId = e.target.id;
