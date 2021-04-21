@@ -3,14 +3,24 @@ const newsBtn = document.querySelector(".news");
 const photosBtn = document.querySelector(".photos");
 const moreBtn = document.querySelector(".more");
 const dropdown = document.querySelector(".dropdown-container");
+const carouselNode = document.querySelector(".carousel");
 let tabId = "news";
 
 const carousel = (function () {
-  const carousel = document.querySelector(".carousel");
-  const carouselTrack = document.querySelector(".carousel-track");
+  const slidecontainer = document.querySelector(".carousel__slide-container");
+  const carouselImgs = Array.from(slidecontainer.children);
+  let currentImgId = 3;
+  let currentImg = document.getElementById(`${currentImgId}`);
+
+  function setCurrentImg(direction) {
+    direction === "left" ? --currentImgId : ++currentImgId;
+    currentImg = document.getElementById(`${currentImgId}`);
+  }
 
   function gotoLeftImg() {
-    alert("yep");
+    currentImg.classList.toggle("selected-image");
+    setCurrentImg("left");
+    currentImg.classList.toggle("selected-image");
   }
 
   function gotoRightImg() {
@@ -22,10 +32,18 @@ const carousel = (function () {
   function timer() {}
 
   function display(property) {
-    carousel.style.display = property;
+    carouselNode.style.display = property;
   }
 
-  return { display, gotoLeftImg, gotoRightImg, gotoClickedImg, timer };
+  function arrows() {
+    return document.querySelectorAll(".carousel__button");
+  }
+
+  function navDots() {
+    return document.querySelectorAll(".nav-dots");
+  }
+
+  return { display, gotoLeftImg, gotoRightImg, gotoClickedImg, timer, arrows, navDots };
 })();
 
 const news = (function () {
@@ -54,4 +72,15 @@ nav.addEventListener("click", (e) => {
 
   tabId === "photos" ? carousel.display("flex") : carousel.display("none");
   tabId === "news" ? news.display("flex") : news.display("none");
+});
+
+carouselNode.addEventListener("click", (e) => {
+  switch (e.target.id) {
+    case "carousel__button--left":
+      carousel.gotoLeftImg();
+      break;
+    case "carousel__button--right":
+      carousel.gotoLeftImg();
+      break;
+  }
 });

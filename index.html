@@ -43,21 +43,22 @@
 
       <article class="carousel">
         <button class="carousel__button carousel__button--left">
-          <i class="fas fa-arrow-left fa-2x"></i>
+          <i class="fas fa-arrow-left fa-2x" id="carousel__button--left"></i>
         </button>
         <div class="carousel__slide-container">
-          <img src="./images/abstract-268771_960_720.jpg" alt="" />
-          <img src="./images/beauty-of-nature-3.jpg" alt="" />
-          <img src="./images/landscape-summer-lake.jpg" alt="" />
+          <img src="./images/abstract-268771_960_720.jpg" alt="" id="1" />
+          <img src="./images/beauty-of-nature-3.jpg" alt="" id="2" />
+          <img src="./images/landscape-summer-lake.jpg" class="selected-image" alt="" id="3" />
+          <img src="./images/landscape-summer-lake.jpg" alt="" id="3" />
         </div>
         <button class="carousel__button carousel__button--right">
-          <i class="fas fa-arrow-right fa-2x"></i>
+          <i class="fas fa-arrow-right fa-2x" id="carousel__button--right"></i>
         </button>
 
         <div class="carousel__nav">
-          <button class="carousel__indicator current-slide-btn"></button>
-          <button class="carousel__indicator"></button>
-          <button class="carousel__indicator"></button>
+          <button class="nav-dots current-slide-btn"></button>
+          <button class="nav-dots"></button>
+          <button class="nav-dots"></button>
         </div>
       </article>
     </main>

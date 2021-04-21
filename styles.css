@@ -37,29 +37,34 @@ body {
 }
 
 .carousel {
+  overflow: auto;
   position: relative;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   height: 95vh;
-  width: 100%;
 }
 
 .carousel__slide-container {
   display: flex;
   position: relative;
-  width: 50vw;
+  width: auto;
   height: 50vh;
   transition: all 250ms;
 }
 
 .carousel__slide-container img {
-  position: absolute;
-  width: 100%;
+  display: none;
+  width: auto;
   height: 100%;
   object-fit: cover;
   left: 0;
   top: 0;
+}
+
+.selected-image {
+  display: flex !important;
+  left: 50%;
 }
 
 .carousel__button {
@@ -88,7 +93,7 @@ body {
   cursor: default;
 }
 
-.carousel__indicator {
+.nav-dots {
   width: 14px;
   height: 14px;
   margin: 0 5px;
@@ -97,7 +102,7 @@ body {
   border-color: transparent;
 }
 
-.carousel__indicator:hover {
+.nav-dots:hover {
   cursor: pointer;
   transform: scale(120%);
 }
@@ -116,7 +121,7 @@ body {
 }
 
 .news-content {
-  display: flex;
+  display: none;
   height: 95vh;
   justify-content: center;
   align-items: center;
