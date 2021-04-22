@@ -39,8 +39,13 @@ main {
 }
 
 .nav-list li div:hover {
-  transform: scale(130%);
+  transform: scale(200%);
   cursor: pointer;
+}
+
+.selected-nav {
+  transform: scale(200%);
+  text-decoration:underline;
 }
 
 .carousel {

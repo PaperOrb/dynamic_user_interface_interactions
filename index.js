@@ -97,6 +97,7 @@ const carousel = (function () {
   };
 })();
 
+// navigation header
 const news = (function () {
   const newsContent = document.querySelector(".news-content");
 
@@ -111,7 +112,6 @@ function renderDropdown(dropdown) {
   dropdown.toggleAttribute("hidden");
 }
 
-// header navigation
 nav.addEventListener("click", (e) => {
   tabId = e.target.id;
   const acceptableIDS = ["more", "news", "photos"];
@@ -124,6 +124,10 @@ nav.addEventListener("click", (e) => {
 
   tabId === "photos" ? carousel.display("flex") : carousel.display("none");
   tabId === "news" ? news.display("flex") : news.display("none");
+  acceptableIDS.forEach((eleID) => {
+    document.getElementById(eleID).classList.remove("selected-nav");
+  });
+  document.getElementById(e.target.id).classList.add("selected-nav");
 });
 
 // function calls
