@@ -111,8 +111,6 @@ function renderDropdown(dropdown) {
   dropdown.toggleAttribute("hidden");
 }
 
-carousel.setDefaultImgMargin("right");
-
 // header navigation
 nav.addEventListener("click", (e) => {
   tabId = e.target.id;
@@ -128,6 +126,9 @@ nav.addEventListener("click", (e) => {
   tabId === "news" ? news.display("flex") : news.display("none");
 });
 
+// function calls
+carousel.setDefaultImgMargin("right");
+
 // carousel arrow navigation
 carouselNode.addEventListener("click", (e) => {
   switch (e.target.id) {
@@ -138,36 +139,30 @@ carouselNode.addEventListener("click", (e) => {
       carousel.gotoRightImg();
       break;
   }
-  highlightNavDot(e.target); // fix so this highlights current slide dot
+  let slideNumber = carousel.getCurrentImgId()[1];
+  let navDotId = "n" + slideNumber;
+  highlightNavDot(e.target, navDotId); // fix so this highlights current slide dot
 });
 
 // carousel dot navigation
-function highlightNavDot(target) {
+function highlightNavDot(target, navDotId) {
   if (target.id !== "dot-container") {
     Array.from(carouselNavDots.children).forEach((ele) => {
       ele.classList.remove("current-slide-dot");
     });
-    let slideNumber = carousel.getCurrentImgId()[1];
-    let navDotId = "n" + slideNumber;
     let navDotEle = document.getElementById(navDotId);
     navDotEle.classList.add("current-slide-dot");
   }
 }
 
 carouselNavDots.addEventListener("click", (e) => {
-  let currentNavDotId = e.target.id;
-  let navDotIdToInt = Number(currentNavDotId[1]);
-  highlightNavDot(e.target);
+  let slideNumber = carousel.getCurrentImgId()[1];
+  let navDotId = "n" + slideNumber;
+  highlightNavDot(e.target, navDotId);
 
-  switch (e.target.id) {
-    case "n1":
-      carousel.gotoLeftImg();
-      break;
-    case "n2":
-      carousel.gotoRightImg();
-      break;
-    case "n3":
-      carousel.gotoLeftImg();
-      break;
+  if (e.target.id === "dot-container") return;
+  while (slideNumber !== e.target.id[1]) {
+    carousel.gotoLeftImg();
+    slideNumber = carousel.getCurrentImgId()[1];
   }
 });
