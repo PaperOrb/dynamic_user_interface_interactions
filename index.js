@@ -13,6 +13,10 @@ const carousel = (function () {
   let currentImgId = "s1";
   let currentImg = document.getElementById(`${currentImgId}`);
 
+  function getCurrentImgId() {
+    return currentImgId;
+  }
+
   function setCurrentImgId(direction) {
     let idToInt = Number(currentImgId[1]);
 
@@ -80,7 +84,17 @@ const carousel = (function () {
     return document.querySelectorAll(".nav-dots");
   }
 
-  return { display, gotoLeftImg, gotoRightImg, gotoClickedImg, timer, arrows, navDots, setDefaultImgMargin };
+  return {
+    display,
+    getCurrentImgId,
+    gotoLeftImg,
+    gotoRightImg,
+    gotoClickedImg,
+    timer,
+    arrows,
+    navDots,
+    setDefaultImgMargin,
+  };
 })();
 
 const news = (function () {
@@ -124,6 +138,7 @@ carouselNode.addEventListener("click", (e) => {
       carousel.gotoRightImg();
       break;
   }
+  highlightNavDot(e.target); // fix so this highlights current slide dot
 });
 
 // carousel dot navigation
@@ -132,7 +147,10 @@ function highlightNavDot(target) {
     Array.from(carouselNavDots.children).forEach((ele) => {
       ele.classList.remove("current-slide-dot");
     });
-    target.classList.add("current-slide-dot");
+    let slideNumber = carousel.getCurrentImgId()[1];
+    let navDotId = "n" + slideNumber;
+    let navDotEle = document.getElementById(navDotId);
+    navDotEle.classList.add("current-slide-dot");
   }
 }
 
